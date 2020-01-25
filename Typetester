@@ -1,0 +1,214 @@
+#HandCricket
+#Rules:First, between you and the computer, you have to decide who is batting and balling by a toss
+#The computer and you, the user are required to simultaneously enter a number.
+#If the numbers are the same, whoever is batting is out
+#If the numbers are not the same, whoever is batting will add that many runs to his score
+#Whoever scores more wins
+
+import random
+import time
+i=1
+while i<10:
+    print("LEVEL",i)
+    print("The rules are simple. The computer may pick a number from 1 to", i*5, "while you can do so till 5.")
+    toss=random.randint(1,2)
+    computer_choice=random.randint(1,2)
+    time.sleep(2)
+    if toss==1 and computer_choice==1:
+        print("The computer wins and chooses to bat")
+        q=100
+    elif toss==1 and computer_choice==2:
+        print("The computer wins and chooses to ball")
+        q=200
+    elif toss==2:
+        user_choice=input("You have won the toss. Do you wish to bat or ball?: ").upper()
+        q=300
+
+    result="Game On"
+    computer_1="Computer Batting"
+    player_1="Player Batting"
+    computer_runs=0
+    player_runs=0
+    if q==100:
+        while result=="Game On":
+            while computer_1=="Computer Batting":
+                computer_move1=random.randint(1,i*5)
+                player_move1=int(input("Your turn (No. between 1-5): "))
+                print("Computer's Turn: ", computer_move1)
+                if player_move1>5:
+                    print("Wrong Move, try again")
+                    exit()
+                if computer_move1!=player_move1:
+                    computer_runs+=computer_move1
+                elif computer_move1==player_move1:
+                    print("Computer Out")
+                    computer_1="Computer out"
+                    print(computer_runs+1, "runs to win")
+
+            print("\n")
+            while player_1=="Player Batting" or player_runs<=computer_runs+1:
+                computer_move2=random.randint(1,i*5)
+                player_move2=int(input("Your turn (No. between 1-5): "))
+                print("Computer's Move : ", computer_move2)
+
+                if player_move2>5:
+                    print("Wrong Move, try again")
+                    exit()
+                if computer_move2!=player_move2:
+                    player_runs+=player_move2
+                elif computer_move2==player_move2:
+                    print("You're Out")
+                    player_1="Player out"
+                    result=="Game Over"
+                    if player_runs<computer_runs:
+                        print("You Lose")
+                        exit()
+                    elif player_runs==computer_runs:
+                        print("Draw")
+                if player_runs>=computer_runs:
+                    print("YOU WIN!")
+                    player_1="Player out"
+                    result=="Game Over"
+                    i+=1
+                    
+
+
+    result="Game On"
+    computer_2="Computer Batting"
+    player_2="Player Batting"
+    computer_runs=0
+    player_runs=0
+    if q==200:
+        while result=="Game On":
+            while player_1=="Player Batting":
+                computer_move3=random.randint(1,i*5)
+                player_move3=int(input("Your turn (No. between 1-5): "))
+                print("Computer's Turn: ", computer_move3)
+                if player_move3>5:
+                    print("Wrong Move, try again")
+                    exit()
+                if computer_move3!=player_move3:
+                    player_runs+=player_move3
+                elif player_move3==player_move3:
+                    print("You're Out")
+                    player_1="player out"
+                    print(player_runs+1, "runs to win for the computer")
+
+            print("\n")
+            while computer_1=="Computer Batting" or computer_runs<=player_runs+1:
+                computer_move4=random.randint(1,i*5)
+                player_move4=int(input("Your turn (No. between 1-5): "))
+                print("Computer's Move : ", computer_move4)
+
+                if player_move4>5:
+                    print("Wrong Move, try again")
+                    exit()
+                if computer_move4!=player_move4:
+                    player_runs+=player_move4
+                elif computer_move4==player_move4:
+                    print("Computer's Out")
+                    computer_2="Player out"
+                    result=="Game Over"
+                    if player_runs>computer_runs:
+                        print("YOU WIN!")
+                        i+=1
+                    if player_runs<computer_runs:
+                        print("You Lose")
+                        exit()
+                    elif player_runs==computer_runs:
+                        print("Draw")
+                
+
+
+    if q==300:
+        if user_choice=="BAT":
+            computer_3="Computer Batting"
+            player_3="Player Batting"
+            computer_runs=0
+            player_runs=0
+            while result=="Game On":
+                while player_3=="Player Batting":
+                    computer_move4=random.randint(1,i*5)
+                    player_move4=int(input("Your turn (No. between 1-5): "))
+                    print("Computer's Turn: ", computer_move4)
+                    if player_move4>5:
+                        print("Wrong Move, try again")
+                        exit()
+                    if computer_move4!=player_move4:
+                        player_runs+=player_move4
+                    elif player_move4==player_move4:
+                        print("You're Out")
+                        player_3="player out"
+                        print(player_runs+1, "runs to win for the computer")
+
+
+                print("\n")
+                while computer_3=="Computer Batting" or computer_runs<=player_runs+1:
+                    computer_move5=random.randint(1,i*5)
+                    player_move5=int(input("Your turn (No. between 1-5): "))
+                    print("Computer's Move : ", computer_move5)
+
+                    if player_move5>5:
+                        print("Wrong Move, try again")
+                        exit()
+                    if computer_move5!=player_move5:
+                        computer_runs+=computer_move5
+                    elif computer_move5==player_move5:
+                        print("Computer's Out")
+                        computer_3="Player out"
+                        result=="Game Over"
+                        if player_runs>computer_runs:
+                            print("YOU WIN!")
+                            i+=1
+                        if player_runs<computer_runs:
+                            print("You Lose")
+                            exit()
+                        elif player_runs==computer_runs:
+                            print("Draw")
+                            exit()
+                            
+        if user_choice=="BALL":
+            while result=="Game On":
+                while computer_1=="Computer Batting":
+                    computer_move1=random.randint(1,i*5)
+                    player_move1=int(input("Your turn (No. between 1-5): "))
+                    print("Computer's Turn: ", computer_move1)
+                    if player_move1>5:
+                        print("Wrong Move, try again")
+                    if computer_move1!=player_move1:
+                        computer_runs+=computer_move1
+                    elif computer_move1==player_move1:
+                        print("Computer Out")
+                        computer_1="Computer out"
+                        print(computer_runs+1, "runs to win")
+
+                print("\n")
+                while player_1=="Player Batting" or player_runs<=computer_runs+1:
+                    computer_move2=random.randint(1,i*5)
+                    player_move2=int(input("Your turn (No. between 1-5): "))
+                    print("Computer's Move : ", computer_move2)
+
+                    if player_move2>5:
+                        print("Wrong Move, try again")
+                        exit()
+                    if computer_move2!=player_move2:
+                        player_runs+=player_move2
+                    elif computer_move2==player_move2:
+                        print("You're Out")
+                        player_1="Player out"
+                        result=="Game Over"
+                        if player_runs<computer_runs:
+                            print("You Lose")
+                            exit()
+                        elif player_runs==computer_runs:
+                            print("Draw")
+                            exit()
+                    if player_runs>=computer_runs:
+                        print("YOU WIN!")
+                        i+=1
+                        player_1="Player out"
+                        result=="Game Over"
+                    
+
+
+
